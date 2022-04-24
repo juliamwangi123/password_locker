@@ -12,9 +12,19 @@ class User:
         self.username =username
         self.password =password
     
-    def save_user(self):
+    def save_new_user(self):
         """
         add  new user to the list using append method
         """
         User.user_detail.append(self)
+    
+    @classmethod
+    def show_users(cls):
+        """
+        decorator  will declare  the method this as
+        a class method
+        """
+        return cls.user_detail
+
+    
     
