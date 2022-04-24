@@ -26,5 +26,9 @@ class User:
         """
         return cls.user_detail
 
-    
+    def delete_user(self):
+        '''
+        delete users details
+        '''
+        User.user_detail.remove(self)
     
