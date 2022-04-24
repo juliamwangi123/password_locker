@@ -99,7 +99,10 @@ def show():
                  saved_password = input()
                  
             else:
-                print("Logged in Succesfully")
+                print("Logged in Succesfully in your Password ")
+
+                print(">>>>>>>>>>>>")
+                print("To register new acc press 'add', to display saved item 'display'  and 'delete' to delete")
                 
                 
         
