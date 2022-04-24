@@ -1,3 +1,5 @@
+#this class shows user  master aacount
+
 class User:
     ''''
     add a class variable that hold user details
@@ -19,10 +21,11 @@ class User:
         User.user_detail.append(self)
     
     @classmethod
-    def show_users(cls):
+    def show_users_detail(cls):
         """
         decorator  will declare  the method this as
-        a class method
+        a class method that will show user in our
+        list
         """
         return cls.user_detail
 
@@ -31,4 +34,5 @@ class User:
         delete users details
         '''
         User.user_detail.remove(self)
+    
     
