@@ -11,15 +11,26 @@ def create_user(username,password):
 
 def save_user(user):
     '''
-    this fuc
+    this funtion saves new user 
     '''
     user.save_user()
     
 
-
+def delete_user(user):
+    
+    """
+    this functiondeletes a user
+    
+    """
+    
+    user.delete_user() 
     
     
-    
+def show_user():
+    """
+    this function show createsd and saves users
+    """
+    return User.show_user()
  
     
     
