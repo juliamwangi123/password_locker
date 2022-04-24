@@ -1,4 +1,6 @@
 #this class will create password vault
+import string
+import random
 class Password_vault:
     accounts_password= []
 
@@ -40,4 +42,7 @@ class Password_vault:
         
         return cls.accounts_password
         
-          
+    def generatePassword(stringLength=4):
+        """Password random generator"""
+        password = string.ascii_uppercase + string.ascii_lowercase + string.digits + "~!@#$%^&*"
+        return ''.join(random.choice(password) for i in range(stringLength))

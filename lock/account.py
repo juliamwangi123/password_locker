@@ -1,3 +1,6 @@
+
+
+from pyrfc3339 import generate
 from user import  User
 from vault import Password_vault
 
@@ -34,7 +37,12 @@ def show_user():
     return User.show_user()
  
     
-    
+def generate_Password():
+    '''
+    generates a random password for the user.
+    '''
+    auto_password=Password_vault.generatePassword()
+    return auto_password 
     
   
 
@@ -84,7 +92,7 @@ def show():
             else:
                 print(" you've logged in succesfully")
                 
-        elif code == 'L0G':
+        elif code == 'L':
             print("Welcome, Login to your Account")
             print("Enter your Username")
             saved_username = input()
@@ -103,8 +111,20 @@ def show():
 
                 print(">>>>>>>>>>>>")
                 print("To register new acc press 'add', to display saved item 'display'  and 'delete' to delete")
-                
-                
+                pass_code = input("pick from the selection")
+                if pass_code == "add":
+                    print("Create New site")
+                    print("Website")
+                    site = input().lower()
+                    print("Your site username")
+                    site_userName = input()
+                    print("type C for creating your password or G for us to generate")
+                    pass_gen=input()
+                    if pass_gen == "C":
+                        create_password=input("input password:")
+                    else:
+                        g_pass=generate_Password()
+
         
         elif code == 'EXIT':
             break
