@@ -1,8 +1,20 @@
 #this class will create password vault
 import string
 import random
+from user import User
 class Password_vault:
     accounts_password= []
+
+
+
+    @classmethod
+    def userVerification(cls, name, password):
+       
+        _user = " "
+        for user in User.user_detail:
+            if user.name == name and user.password ==password:
+                _user == user.name
+        return _user
 
     def __init__(self, site, regesterdBy, site_password):
         ''''
