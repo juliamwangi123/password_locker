@@ -31,10 +31,7 @@ class Password_vault:
     
     
     @classmethod 
-    
     def display_credentials(cls):
-        
-        
         """"
         this method show s all theaccounts and password inside password vaul
         
@@ -42,7 +39,35 @@ class Password_vault:
         
         return cls.accounts_password
         
-    def generatePassword(stringLength=4):
+    
+    @classmethod
+    def find_credential(cls, site):
+        """
+        Method that takes in sites name and returns  password .
+
+        """
+        for password in cls.accounts_password:
+            if password.site== site:
+                return password
+    
+    @classmethod
+    def display_credentials(cls):
+        """
+        Method that returns all items in the credentials list
+
+        """
+        return cls.accounts_password
+    @classmethod
+    def if_credential_exist(cls, site):
+        """
+        Method that checks if a credential exists from the credential list and returns true or false depending if the credential exists.
+        """
+        for credential in cls.credentials_list:
+            if credential.site == site:
+                return True
+        return False
+
+    def generatePassword(passLength=5):
         """Password random generator"""
         password = string.ascii_uppercase + string.ascii_lowercase + string.digits + "~!@#$%^&*"
-        return ''.join(random.choice(password) for i in range(stringLength))
+        return ''.join(random.choice(password) for i in range(passLength))
