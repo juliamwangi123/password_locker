@@ -53,16 +53,16 @@ class Password_vault:
     @classmethod
     def display_credentials(cls):
         """
-        Method that returns all items in the credentials list
+        this method that returns all items in the credentials list
 
         """
         return cls.accounts_password
     @classmethod
     def if_credential_exist(cls, site):
         """
-        Method that checks if a credential exists from the credential list and returns true or false depending if the credential exists.
+        this method checks if the sites credentials exist or not.
         """
-        for credential in cls.credentials_list:
+        for credential in cls.accounts_password:
             if credential.site == site:
                 return True
         return False
