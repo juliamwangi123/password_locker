@@ -7,7 +7,14 @@ This a password vault that uses Python  that manages signin and signup credentia
  ##### You must have the following installed to run this app
  * Python3
  * Pip
-
+### Behavior Driven
+1. Prompts User to Create Acount
+2. User Logs into Account
+3. Prompts User To Create Accout
+4. User can Display Accounts Created
+5. Can Find Account 
+6. Delete Account
+7. User can exit from the program
  ##### Clone
  * Launch the terminal on your PC
  * clone the repo to your machine
