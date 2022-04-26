@@ -1,6 +1,6 @@
 import unittest
 
-from vault import Password_vault
+from credentials import Password_vault
 
 class TestCredentials(unittest.TestCase):
     """
