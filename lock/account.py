@@ -1,8 +1,6 @@
 
-
-from pyrfc3339 import generate
 from user import  User
-from vault import Password_vault
+from credentials import Password_vault
 
 def create_user(username,password):
     '''
@@ -13,36 +11,30 @@ def create_user(username,password):
     return new_user
 
 
-def save_user(user):
+
+def save_new_user(User):
     '''
     this funtion saves new user 
     '''
-    user.save_user()
+    User.save_new_user()
     
 
-def delete_user(user):
+def delete_user_detail(User):
     
     """
     this functiondeletes a user
     
     """
     
-    user.delete_user() 
+    User.delete_user() 
     
     
 def show_user():
     """
     this function show createsd and saves users
     """
-    return User.show_user()
+    return User.show_users_detail()
  
-    
-def generate_Password():
-    '''
-    generates a random password for the user.
-    '''
-    auto_password=Password_vault.generatePassword()
-    return auto_password 
 
 def userLogin(name, password):
 
@@ -50,30 +42,31 @@ def userLogin(name, password):
 
     return verifiedUserAccount
 
+# credentials class method begin here
 
-def createNewusercredential( siteName, username,password):
+def createNewusercredential(site, regesterdBy, site_password):
 
-    newUserCredential = Password_vault(siteName, username,password)    
+    newUserCredential = Password_vault(site, regesterdBy, site_password)    
     return newUserCredential
 
-def saveUserCredential(userCredential):
+def saveUserCredential(Password_vault):
 
-    userCredential.save_credentials()
+    Password_vault.save_credentials()
 
-def delCredential(credentials):
+def delCredential(Password_vault):
 
-    credentials.delete_credentials()
+    Password_vault.delete_credentials() 
   
 def displayUserCredentials():
 
     return Password_vault.display_credentials()
-def findUserCredentials(userAccount):
+def findUserCredentials(site):
 
-    return Password_vault.find_credential(userAccount)
+    return Password_vault.if_credential_exist(site)
 
-def doCredentialsExist(account):
+# def doCredentialsExist(account):
 
-    return Password_vault.if_credential_exist(account)
+#     return Password_vault.if_credential_exist(account)
 
 def systemGeneratedPassword():
 
@@ -83,27 +76,33 @@ def systemGeneratedPassword():
 
 def show():
 
-    print("WELCOME TO PASSWOD LOCKER")
+    print("WELCOME TO PASSWORD LOCKER")
     print("Please enter your name")
     username= input()
     print(f"Hi {username}, use the following codes to get you started")
+    print(">>>>>>>>>>>>>>>>>>>>>>")
+    print(">>>>>>>>>>>>>>>>>>>>>>")
+
     print("RE: To create a new account")
     print("LO: To  login into your account")
     comands= input().upper().strip()
     
     if comands == "RE":
+        print(">>>>>>>>>>>>>>>>>>>>>>")
 
         print("Enter Your First Name: ")
         name = input()
        
         
         while True:
+            print(">>>>>>>>>>>>>>>>>>>>>>")
 
             print("CS: To enter your password")
             print("GP: To generate password")
             command= input().upper().strip()
 
             if command == "CS":
+                print(">>>>>>>>>>>>>>>>>>>>>>")
 
                 print("PLease enter password: ")
                 login_pass= input()
@@ -111,28 +110,33 @@ def show():
 
             elif command == "GP":
 
-                login_pass= generate_Password()
+                login_pass= systemGeneratedPassword()
                 break
 
             else:
 
                 print("Please select a valid option")
+       
 
-        save_user(create_user(name,login_pass))
+        save_new_user(create_user(name,login_pass))
         print(f" Thank you {username}. You have successfully signed up ")
-        show_user()()
+        show_user()
 
+        print(">>>>>>>>>>>>>>>>>>>>>>")
+# Login  into account
     elif comands =="LO":
-
+        
         print("Enter username and password to sign in: ")
         username= input("Username:  ")
         login_pass= input("Password:  ")
         userlogins = userLogin(username,login_pass)
+        
         if userLogin == userlogins:
             print(f"Hi, {username}. Welcome back to Password Vault")
 
     while True:
-
+        print(">>>>>>>>>>>>>>>>>>>>>>")
+        print(">>>>>>>>>>>>>>>>>>>>>>")
         print("Please key in any of the following to proceed ")
         print("CC: Create new user Credential")
         print("DC: Display existing Account credentials")
@@ -167,6 +171,7 @@ def show():
                 elif p_choice == "2":
 
                     password= systemGeneratedPassword()
+                    print(f"your generated passcode is {password}")
                     break
 
                 else:
@@ -181,11 +186,11 @@ def show():
 
                 print("Account Exist: ")
 
-                for acc in displayUserCredentials():
-
-                    print(f"Account: {acc.myAccount}")
-                    print(f"Username: {username}")
-                    print(f"Password: {password}")
+                # for acc in displayUserCredentials():
+                for Password_vault in displayUserCredentials():
+                    print(f"Account: {Password_vault.site}")
+                    print(f"Username: {Password_vault.regesterdBy}")
+                    print(f"Password: {Password_vault.site_password}")
 
 
             else:
@@ -194,14 +199,14 @@ def show():
 
         elif command == "FC":
 
-            print("Sarch account : ")
-            accountName = input().upper().strip
+            print("Search account : ")
+            accountName = input()
 
             if findUserCredentials(accountName):
 
                 searchAcc = findUserCredentials(accountName)
-                print(f"Account : {searchAcc.myAccount} \n")
-                print(f"Username: { searchAcc.username} \n")
+                print(f"Account : {searchAcc} \n")
+                # print(f"Username: { searchAcc} \n")
 
             else:
 
@@ -220,8 +225,8 @@ def show():
             if findUserCredentials(accountName):
 
                 searchAcc = findUserCredentials(accountName)
-                print("")
-                searchAcc.delCredential()
+                print("searchAcc")
+                # searchAcc.delCredential()
                 print(f"{ searchAcc.myAccount} deleted successfully \n")
 
             else:

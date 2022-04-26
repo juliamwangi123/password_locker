@@ -1,6 +1,7 @@
 #this class will create password vault
 import string
 import random
+from traceback import print_stack
 from user import User
 class Password_vault:
     accounts_password= []
@@ -62,13 +63,8 @@ class Password_vault:
             if password.site== site:
                 return password
     
-    @classmethod
-    def display_credentials(cls):
-        """
-        this method that returns all items in the credentials list
-
-        """
-        return cls.accounts_password
+   
+   
     @classmethod
     def if_credential_exist(cls, site):
         """
@@ -83,3 +79,4 @@ class Password_vault:
         """Password random generator"""
         password = string.ascii_uppercase + string.ascii_lowercase + string.digits + "~!@#$%^&*"
         return ''.join(random.choice(password) for i in range(passLength))
+
