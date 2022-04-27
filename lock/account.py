@@ -64,9 +64,9 @@ def findUserCredentials(site):
 
     return Password_vault.if_credential_exist(site)
 
-# def doCredentialsExist(account):
+def doCredentialsExist(account):
 
-#     return Password_vault.if_credential_exist(account)
+    return Password_vault.if_credential_exist(account)
 
 def systemGeneratedPassword():
 
@@ -202,11 +202,10 @@ def show():
             print("Search account : ")
             accountName = input()
 
-            if findUserCredentials(accountName):
+            if doCredentialsExist(accountName):
 
-                searchAcc = findUserCredentials(accountName)
-                print(f"Account : {searchAcc} \n")
-                # print(f"Username: { searchAcc} \n")
+                # searchAcc = doCredentialsExist(accountName)
+                print(f"Account : {accountName} \n")
 
             else:
 
@@ -220,14 +219,14 @@ def show():
         elif command == "DEL":
 
             print("Enter Account to Delete ")
-            accountName = input().upper().strip()
+            accountName = input()
 
             if findUserCredentials(accountName):
 
-                searchAcc = findUserCredentials(accountName)
-                print("searchAcc")
+                # searchAcc = findUserCredentials(accountName)
+                # print("searchAcc")
                 # searchAcc.delCredential()
-                print(f"{ searchAcc.myAccount} deleted successfully \n")
+                print(f"{ accountName} deleted successfully \n")
 
             else:
 
@@ -240,8 +239,9 @@ def show():
 
         else:
 
-            print(" enter a valid command!")
+                print(f"accountName doesnt exist \n")
 
+        
 
 
             
