@@ -111,6 +111,7 @@ def show():
             elif command == "GP":
 
                 login_pass= systemGeneratedPassword()
+                print(f"{login_pass} is your password")
                 break
 
             else:
